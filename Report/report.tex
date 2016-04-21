@@ -1,0 +1,92 @@
+
+%------------------------ HEADER ------------------------%
+
+\documentclass{egpubl}
+\usepackage{eurovis2016}
+
+\STAR_Eurovis
+\electronicVersion
+
+\PrintedOrElectronic
+
+\usepackage{t1enc}
+\usepackage{dfadobe}
+\usepackage[pdftex]{graphicx}
+\usepackage{cite}
+
+
+%------------------------ TITLE & AUTHOR ------------------------%
+
+% \title[short title (shown on every page on top)]{full paper title}
+
+\title[Seminar Report]{State-of-the-Art-Report for the Seminar}
+
+% \author[short name (shown on every page on top]{full author name}
+
+\author[J. Schmidt \& E. Gr\"{o}ller]
+       {Johanna Schmidt$^{1}$ and Eduard Gr\"{o}ller$^{1}$
+        \\
+         $^1$TU Wien, Austria}
+
+\begin{document}
+
+
+%------------------------ TEASER ------------------------%
+
+\teaser{
+  \includegraphics[width=\linewidth]{teaser}
+  \centering
+  \caption{Report teaser}
+  \label{fig:teaser}
+}
+
+\maketitle
+
+\begin{abstract}
+   The ABSTRACT is to be in fully-justified italicized text, 
+   between two horizontal lines,
+   in one-column format, 
+   below the author and affiliation information.
+   Leave one blank line after the abstract, 
+   then add the subject categories according to the ACM Classification Index 
+   (see http://www.acm.org/class/1998/).
+
+\begin{classification} % according to http://www.acm.org/about/class/2012
+	\CCScat{Computing methodologies}{Computer graphics}{Rendering}
+\end{classification}
+
+\end{abstract}
+
+
+%------------------------ DOCUMENT ------------------------%
+
+\section{Introduction}
+
+Scope and motivation of the report.
+
+%-------------------------------------------------------------------------
+\section{Next Section}
+
+All references have to be cited accordingly \cite{FolDamFeiHug93}.
+
+%-------------------------------------------------------------------------
+\section{Another Section}
+
+Figures should be used to explain the content (see Figure~\ref{fig:firstExample}).
+
+\begin{figure}[htb]
+  \centering
+  \includegraphics[width=.8\linewidth]{sampleFig}
+  \caption{Here is a sample figure.}
+  \label{fig:firstExample}
+\end{figure}
+
+
+%------------------------ REFERENCES ------------------------%
+
+\bibliographystyle{eg-alpha-doi}
+\bibliography{references}
+
+
+\end{document}
+

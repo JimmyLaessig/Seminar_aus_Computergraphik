@@ -14,7 +14,7 @@ $ f(p) = c_{z} +  \sum\limits_{i = 0}^{n-1}(a_i\eta((p-c)s_i))$.
 
 \begin{figure}[htb]
 	\centering
-	\includegraphics[width=.8\linewidth]{CGFCGF12530/disc_primitive}
+	\includegraphics[width=.8\linewidth]{GGP15/disc_primitive}
 	\caption{This figure shows a disc primitive creating a circular landform. The mountain is obtained using ridge-multifractal noise function, smooth hills are created using a turbulence function.}
 	\label{fig:disc_primitive}
 \end{figure}
@@ -26,7 +26,7 @@ Modifiying the profile accordingly, one can simulate roads with this model, by p
 
 \begin{figure}[htb]
 	\centering
-	\includegraphics[width=.8\linewidth]{CGFCGF12530/curve_primitive}
+	\includegraphics[width=.8\linewidth]{GGP15/curve_primitive}
 	\caption{A curve primitive is used to create a river. $q$ corresponds to the projection of p onto the skeleton.}
 	\label{fig:curve_primitive}
 \end{figure}
@@ -35,7 +35,7 @@ Modifiying the profile accordingly, one can simulate roads with this model, by p
 
 \begin{figure}[htb]
 	\centering
-	\includegraphics[width=.8\linewidth]{CGFCGF12530/contour_primitive}
+	\includegraphics[width=.8\linewidth]{GGP15/contour_primitive}
 	\caption{A contour polygon describes a complex system of polygons. In this figure it is used to describe a lake.}
 	\label{fig:contour_primitive}
 \end{figure}
@@ -45,7 +45,7 @@ Complex terrain features are difficult to create procedurally. To add complex fe
 
 \begin{figure}[htb]
 	\centering
-	\includegraphics[width=.8\linewidth]{CGFCGF12530/image_primitive}
+	\includegraphics[width=.8\linewidth]{GGP15/image_primitive}
 	\caption{Real data is mapped onto a quadrangle that can be deformed arbitrarily.}
 	\label{fig:image_primitive}
 \end{figure}
@@ -58,7 +58,7 @@ Much like in Constructive Solid Geometry the inner nodes of the construction tre
 The elevation of two nodes are mixed according to their corresponding weight function. This allows to combine large scale terrain primitives in an effective matter. If two primitives are far away, the do not influence each other. The resulting terrain is the union of to sub-trees. If their regions of interest intersect they blend together.
 \begin{figure}[htb]
 	\centering
-	\includegraphics[width=.8\linewidth]{CGFCGF12530/blend_operator}
+	\includegraphics[width=.8\linewidth]{GGP15/blend_operator}
 	\caption{This figure shows a blending of a mountain and hill to a smoother landscape. the areas of interest intersect partly. }
 	\label{fig:blend_operator}
 \end{figure}
@@ -66,7 +66,7 @@ The elevation of two nodes are mixed according to their corresponding weight fun
 This operator defines specific local changes in the terrain. Such changes for example are lakes, rivers, roads. If the areas of interest intersect, the elevation in A is replaced with the value in B. 
 \begin{figure}[htb]
 	\centering
-	\includegraphics[width=.8\linewidth]{CGFCGF12530/replace_operator}
+	\includegraphics[width=.8\linewidth]{GGP15/replace_operator}
 	\caption{Replacement is used to construct a lunar landscape..}
 	\label{fig:replace_operator}
 \end{figure}
@@ -74,7 +74,7 @@ This operator defines specific local changes in the terrain. Such changes for ex
 The addition operator is used to add variations and details to the terrain. The additional elevation to $f_A$ is controlled by the product of $f_B$ and $\alpha_B$
 \begin{figure}[htb]
 	\centering
-	\includegraphics[width=.8\linewidth]{CGFCGF12530/addition_operator}
+	\includegraphics[width=.8\linewidth]{GGP15/addition_operator}
 	\caption{Real data is mapped onto a quadrangle that can be deformed arbitrarily.}
 	\label{fig:addition_operator}
 \end{figure}
@@ -83,7 +83,7 @@ The warping operator allows to distore the shapeoif a surface by displacing the 
 Applying a warp operator to a sub-tree can mask visual artifacts due to repetitive usage of primitives. 
 \begin{figure}[htb]
 	\centering
-	\includegraphics[width=.8\linewidth]{CGFCGF12530/warp_operator}
+	\includegraphics[width=.8\linewidth]{GGP15/warp_operator}
 	\caption{This figure shows a deformed terrain using the warping operator.}
 	\label{fig:warp_operator}
 \end{figure}

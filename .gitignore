@@ -43,3 +43,5 @@
 *.out
 
 *.synctex.gz
+
+Report/report.pdf

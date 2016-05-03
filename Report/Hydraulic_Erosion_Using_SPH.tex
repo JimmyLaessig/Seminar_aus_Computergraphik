@@ -1,0 +1,14 @@
+\section{Hydraulic Erosion Using Smoothed Particle Hydrodynamics}
+\cite{krivstof2009hydraulic}
+In this paper a novel approach is presented, in which a physically based erosion system can be calculated in realtime. The Base concepts are quite the same as in the previously mentioned publication, but is the title already reveals the already know SPH ist used as underlining base model here.
+
+An important distinction is mode between two different calculation approaches. 
+\begin{enumerate}
+	\item Eulerian models
+	\item Lagrangian models (like SPH)
+\end{enumerate}
+
+The Eulerian models focuses on hydraulic erosion effects and therefore use a static grid of points. A full scale 3D calculation on approach for erosion calculation is almost impossible to be done in realtime. Most used methods therefore rely on ‚2.5D‘ methods, which combine purely surface- / plane-based models with parts of a full 3D approach.
+
+Lagrangian models are based on SPH and calculate their results on particle basis. Due to that fact, these methods are much more scalable. Since everything is calculated on particle basis, this approach yields better more exact results in areas, with a high density of particles. Since there are a lot of necessary calculations to be done with the increasing number of particles, a purely 3D calculation model is rarely used here. As with the Eulerian approach, a combination of calculations on 2D and 3D basis is used. Although this method was not exactly designed with realtime rendering in mind, the resulting ‚2.5D’ approach yields relatively good results while still remaining reducing the time needed to the calculations drastically.
+Since in SPH based approaches all calculations are particle-based, many effects can quite easily be implemented. The basic sediment transport can be calculated as described in ((LINK)). In addition to that, a Donor-Acceptor Scheme ist used here ((LINK)), which takes interaction between particles along their velocity, as well as gravity into account. An important concept here are the so called ‚boundary particles‘, which also play an important role in the aspect of Terrain Modification as it can be seen in ((IMG)).

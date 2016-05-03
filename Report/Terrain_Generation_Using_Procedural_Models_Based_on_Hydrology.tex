@@ -46,7 +46,7 @@ For evaluation the tree is populated with the priority indices of the nodes. Usi
 	\label{fig:horton_strahler}
 \end{figure}
 
-\section{River Classification}
+\subsection{River Classification}
 Once the river graph is build, the domain is divided into non overlapping cells, computed from the Voronoi diagram of node locations.  
 The watershed of a cell $s$ is defined as the set of upstream connected cells and are associated with each water outlet of a cell. Its area is approximated by the sum of areas of cells connected to s. This is used to calculate the mean flow of the river. 
 
@@ -71,7 +71,14 @@ $\lambda$ describes a slope magnitude function that describes if the terrain is 
 
 Each cell is assigned a class label, that corresponds to the type of river. Each class has a trajectory type and a digging profile of the riverbed. It includes geological composition of the riverbed. Each node is assigned such a label based on the river slope, and its proximity to the coast. 
 
-\section{River Primitives Generation}
+\subsection{River Primitives Generation}
 Each cell gets represented by a primitive. First all junctions are generated in a cell. The process starts by connecting two neighbouring water entries inside the cell. Incrementally all consecutive entries are added to the previous stream. Finally the stream is then connected to the water exist. The connection angle of two rivers is defined by the amount of water flow in the streams. Junctions of two rivers with the same size will cause a small junction angle, whereas a vastly difference in water flow will result in an almost perpendicular angle. 
-\section{Terrain Model Generation}
+
+\subsection{Terrain Model Generation}
 Each river class has predefined profiles and a base trajectory of river flow. Using this information, the terrain primitives are generated with the same approach presented in section ~\ref{sec:tmffp}. This allows for additional terrain features and noise textures to be combined with the river flow, to create realistic looking terrains. 
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=\linewidth]{GGG13/valleys_and_rivers}
+	\caption{Rivers and valleys created with a river graph.}
+	\label{fig:valleys}
+\end{figure}

@@ -8,6 +8,14 @@ In this publication \cite{krivstof2009hydraulic} a novel approach is presented, 
 	\label{fig:illustration1}
 \end{figure}
 
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=\linewidth]{KBKS09/illustration2.jpg}
+	\caption{Rendering of terrain erosion through water.}
+	\label{fig:illustration2}
+\end{figure}
+
 \subsection{Two different approaches}
 An important distinction is mode between two different calculation approaches:
 
@@ -18,13 +26,6 @@ The Eulerian models focuses on hydraulic erosion effects and therefore use a sta
 Lagrangian models are based on SPH and calculate their results on particle basis. Due to that fact, these methods are much more scalable. Since everything is calculated on particle basis, this approach yields better more exact results in areas, with a high density of particles.
 
 Since there are a lot of necessary calculations to be done which increase linearly with the number of particles, a purely 3D calculation model is rarely used here. As with the Eulerian approach, a combination of calculations on 2D and 3D basis is used. Although this method was not exactly designed with real-time rendering in mind, the resulting "2.5D" approach yields relatively good results while still remaining reducing the time needed to the calculations drastically.
-
-\begin{figure}[htb]
-	\centering
-	\includegraphics[width=\linewidth]{KBKS09/boundary2.jpg}
-	\caption{SPH boundary particle relocation.}
-	\label{fig:boundary2}
-\end{figure}
 
 Since in SPH based approaches all calculations are particle-based, many physical (side-)effects can quite easily be implemented. The basic sediment transport can be calculated using widely known formulas \cite{krivstof2009hydraulic}. In addition to that, in a Donor-Acceptor Scheme (see Figure \ref{fig:donoracceptor}) is used here, which takes interaction between particles along their velocity, as well as gravity into account \cite{krivstof2009hydraulic}.
 
@@ -37,6 +38,13 @@ Since in SPH based approaches all calculations are particle-based, many physical
 
 An important concept here are the so called "boundary particles", which also play an important role in the aspect of Terrain Modification as it can be seen in Figure \ref{fig:illustration1} and \ref{fig:illustration2}. Those particles basically are the "communication" between the fluid particles (SPH) and the soil where the boundary particles are placed. In the first iteration the erosion and deposition are calculated, and in the second step / iteration the actual deformation of the terrain itself is performed (see Figure \ref{fig:boundary2}). 
 
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=\linewidth]{KBKS09/boundary2.jpg}
+	\caption{SPH boundary particle relocation.}
+	\label{fig:boundary2}
+\end{figure}
+
 \subsection{Performance}
 Since this approach was, as mentioned before, not designed with any real-time applications in mind, the underlying publication does not provide us with comparable frames-per-seconds values or something like that. What the authors do present, are vales of how long a single calculation step takes for a certain amount of particles and for every discussed method.
 
@@ -45,10 +53,4 @@ It has te be kept in mind, that those number represent just the time needed for 
 The utilized hardware was quite common at that time (2008): a Quad Core CPU and a NVIDIA 8800 GT. The average frames per seconds are about 3.3 for 90k particles and around 2.2 for 136k particles. The specific hardware components and complete results can be found in \cite{krivstof2009hydraulic}.
 
 
-\begin{figure}[htb]
-	\centering
-	\includegraphics[width=\linewidth]{KBKS09/illustration2.jpg}
-	\caption{Rendering of terrain erosion through water.}
-	\label{fig:illustration2}
-\end{figure}
 

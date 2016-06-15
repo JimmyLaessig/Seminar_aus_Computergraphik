@@ -1,7 +1,9 @@
-
 Terrain Modeling from Feature Primitives 				[x] Bernhard
 Fast Hydraulic Erosion Simulation and Visualization on GPU		[x] Bernhard
 Large Scale Terrain Generation from Tectonic Uplift and Fluvial Erosion	[x] Bernhard
+
+
+? Interactive physically based Fluid and Erosion Simulation		[?] Bernhard ?
 
 
 Real-time Animation of Sand-Water Interaction				[x] Silvester

@@ -1,4 +1,33 @@
 \section{Interactive physically based Fluid and Erosion Simulation}
-...
+
+??? Anscheinend doppelt ???
+!!! RAW TEXT !!!
+
+This paper from () specializes on interactively creating a terrain with flux and erosion simulation, while being as physically correct as possible (while retaining the ability of realtime interaction). The proposed method is based on newtonian physics and works on a two-dimensional grid with several layers.
+Two different techniques are to be taken into account for this method to work correctly: thermal weathering and hydraulic erosion. While the fist method basically just displaces the surface, the seconds deals with dissolvement, transport and deposition of sediment in a liquid. Previously used methods have a variety of different problems e.g. with handling water-filled hollows (like lakes) or sometimes ever „oscillating“ water due to numerical instabilities occurring in the calculation-process ().
+In the newly developed method by () a special 2D-fluid solver is used, to calculate a 3D water simulation. Also already mentioned before, a „fully 3D“ approach based on a voxel-grid is not suitable for realtime interaction. Therefore a layered structure is introduced, containing five two-dimensional hight fields. In this data structure all values needed for the calculation are stored for each point of the grid:
+- acceleration
+- velocity
+- fluid amount
+- dissolved material amount
+- terrain level
+
+The simulation of water is not done with full 3D Navier-Stokes equations, which are physically correct but very slow, but rather by applying a semi-Lagrangian approximation for smoke-like fluids developed by (). In order to compensate for some instabilities of this method, a „diffusion step“ is performed after every simulation step. In this additional step, the calculated value for the present grid-cell is simply distributed to the four nearest neighbors.
+
+The acceleration and velocity of water relies of the local gradient of the surface. like mentioned before, some physically correctness has to be sacrificed in order to retain real-time interactivenes. The therefore usable two techniques each have certain limitations / problems:
+If the gradient in only calculated from the underlying terrain, all fluids would flow to local minimas (). If it is on the other hand defined as the sum of all terrain levels, flow is in some cases hindered by water in adjacent cells (). To compensate those shortcomings an influence factor is used, that defines how much influence water has on gradient calculations on a specific point.
+
+Hydraulic erosion
+In addition the the water-simulation the transport of sediment with fluids is an important factor to take into account here. In the proposed method a fluid as well as a terrain-cell is assigned a capacity constraint, in order to determine if dissolvement or deposition of material may be occurring. If that is the case, a calculation has to be done with very flow from one grid-cell to another with specially defined formulas ().
+
+(Manual) water distribution
+The actual introduction of water in the system can be done in two different ways:
+Rain can be simulated by generating water and dropping it on random or constant amount on several spots on the surface. This is done best, by using a blue noise pattern which can also be pre-calculated.
+Other water sources can either be pre-determined (e.g. river sources) or be placed by the user in realtime. With this tool the user can generate valleys and erosion patterns, and therefore easily shape the terrain to his or her wishes.
+The evaporation of water is only approximated as exponential decrease of water over time here, since there are a variety of different influencing factors to this phenomenon. The weaknesses of the proposed method are erosion in caves and erosion fragments caused by vertical vortices ().
+The realtime-usability and speed of the calculations has been tested be the authors on a 2.4 GHz Interl CPU, which was able to generate around 4 Frames per second with a 256x256 cell grid (). Since those values - as well as the paper -  are from 2005, the code was written in C# and only the used CPU is given, this might very well be improved by utilizing more modern hardware and moving some of the calculations to the GPU.
+
+!!! RAW TEXT !!!
+??? Anscheinend doppelt ???
 
 

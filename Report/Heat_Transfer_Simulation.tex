@@ -1,9 +1,10 @@
 \section{Heat Transfer Simulation for Modeling Realistic Winter Sceneries}
 
-text \cite{benes2001layered}.
+\cite{benes2001layered}.
+
 !!! RAW TEXT !!!
 
-While many of the previously presented papers strictly deal with erosion in combination with evaporation and seminentation alone, the temperature is mostly assumed to be constant. In some simpler cases it is not take into account at all. In paper presented in this chapter, exactly that often „overlooked“ topic becomes the primary focus of the calculations.
+While many of the previously presented papers strictly deal with erosion in combination with evaporation and seminentation alone, the temperature is mostly assumed to be constant. In some simpler cases it is not take into account at all. In paper presented in this chapter, exactly that often "overlooked" topic becomes the primary focus of the calculations.
 
 To allow more complex thermal calculation for simulating a natural environment, one needs to take a lot of different influences and physical processes into account. The existing methods prior to this paper primarily rely on one of those three approaches for calculating winter scenarios for example:
 \begin{itemize}
@@ -13,7 +14,7 @@ To allow more complex thermal calculation for simulating a natural environment, 
 \end{itemize}
 
 The name of these methods basically already implies what they fundamentally do:
-The particle based accumulation methods evaluate the trajectory of snowflakes (blown by the wind) colliding with the surface (). In an alternative approach the stochastically generated snowflakes are „shot up in the sky“ and the calculations are done recursively. Non of these methods are truly physics-based and both either include solving Navier-Stokes () or the Bolzmann equations (). The only physics based system mentioned, works on basis of vortex fields and incorporates melting snow, but leaves the weather completely aside.
+The particle based accumulation methods evaluate the trajectory of snowflakes (blown by the wind) colliding with the surface (). In an alternative approach the stochastically generated snowflakes are "shot up in the sky" and the calculations are done recursively. Non of these methods are truly physics-based and both either include solving Navier-Stokes () or the Bolzmann equations (). The only physics based system mentioned, works on basis of vortex fields and incorporates melting snow, but leaves the weather completely aside.
 
 The surface displacement methods basically only calculate the hight of the accumulated snow falling on a specific spot. This can easily be done by using the depth buffer () or through dissipating calculated ambient occlusion with illumination (). Another very efficient variant of this approach is done by using hight span maps and heavily relies on a statistical model for snow accumulation derived from observations in nature ().
 
@@ -24,10 +25,10 @@ Like many other methods, this one also relies on a voxel grid. Like for so many 
 
 Here this problem is handled by evaluating the evolution of temperature of every voxel, taking into account changing weather and environmental conditions (and therefore temperate) over time. After that a hightfield is generated for the surface representation, from the hight of snow stored in the according voxels ().
 
-The data structure used for the calculation consists of a grid of voxels, where for each voxel one (or two) materials, the temperature and the percentage of solid material are stored along with energy exchange over time. Since some voxels can contain two materials at once (e.g. ice and water or snow and air), these voxels need to be evaluated more carefully. Phase transitions are more likely to occur in those „mixed“ voxels than in any other one.
+The data structure used for the calculation consists of a grid of voxels, where for each voxel one (or two) materials, the temperature and the percentage of solid material are stored along with energy exchange over time. Since some voxels can contain two materials at once (e.g. ice and water or snow and air), these voxels need to be evaluated more carefully. Phase transitions are more likely to occur in those "mixed" voxels than in any other one.
 
 \subsection{The calculation process}
-In the calculation technique itself its rather complicated and it will only by presented as an overview here. Due to it’s highly physically-based background the results are very accurate, but not meant to be used for realtime calculations.
+In the calculation technique itself its rather complicated and it will only by presented as an overview here. Due to it's highly physically-based background the results are very accurate, but not meant to be used for realtime calculations.
 
 The necessary calculations for this approach is performed in four different steps:
 \begin{enumerate}
@@ -37,7 +38,7 @@ The necessary calculations for this approach is performed in four different step
 	\item Computer phase-change for affected voxels
 \end{enumerate}
 
-These five materials are key to all calculations performed here: Rock, Ice, Water, Snow, Air. Every material has it’s own constraints and attributes. Some of this attributes are mass density, specific heat capacity, thermal conductivity, emissivity, melting temperature, etc.
+These five materials are key to all calculations performed here: Rock, Ice, Water, Snow, Air. Every material has it's own constraints and attributes. Some of this attributes are mass density, specific heat capacity, thermal conductivity, emissivity, melting temperature, etc.
 
 In addition to the materials itself, there are a number of global factors and attributes needed for the calculation, which are defined in the environmental model. This model defines the development and change of weather over time. Weather itself is defined as air temperature, dev point, the amount of snowfall, the cloud cover as well as information about day- and night-cycles.
 
@@ -50,7 +51,7 @@ All thermal transfers happening in the simulation can be categorized as one of t
 
 Without going too much into detail here it can again be stated that these calculations are based on several physics-equations and take a lot of detailed factors and influences as well as properties into account. For example can the warming up of a surface from the energy (heat) impact through sun-rays not only be assumed to be constant. In this computational model the temperature of the sky itself is needed to get an result. This temperature does depend on the temperature of the air at this time, and the dew point temperature. In addition to that the degree of the sundays hitting the surface is evaluated. If the sky is not assumed to be cloudless, the amount of vapor in the air (which is decreasing with the dew point temperature) has also to be taken into account. After that, the actual filtering of the sun-rays through one or more clouds can be applied. Another good example is the calculation of indirect heat, which is reflected from nearby surfaces and can effect snow-melding in the mountains in nature for example.
 
-For the phase changes from one material to another, a fusion temperature is defined. If this temperature is reached, the (partial of complete) transition of this voxel is performed. Since some aspects go ever further into detail than this paper already does, things like the dynamics of flowing water is approximated in the calculations. This would have to be done in addition to computing the absorbtion and evaporation of water through solid ground (rock) and therefor distinguishing between dry and wet rocks. Also the possibility of flowing water freezing during movement due to slow flowing speeds and low temperatures of the ground, is not take into account here. Another interesting physical phenomenon included in this model’s calculations are different temperatures within a lake or even a puddle of water. Since the weight of water changes a little with its temperature, and the sun generally warms the upper layer of a lake more than the lower parts of it, a lake or pond can come times be decided into more than one different temperature zones.
+For the phase changes from one material to another, a fusion temperature is defined. If this temperature is reached, the (partial of complete) transition of this voxel is performed. Since some aspects go ever further into detail than this paper already does, things like the dynamics of flowing water is approximated in the calculations. This would have to be done in addition to computing the absorbtion and evaporation of water through solid ground (rock) and therefor distinguishing between dry and wet rocks. Also the possibility of flowing water freezing during movement due to slow flowing speeds and low temperatures of the ground, is not take into account here. Another interesting physical phenomenon included in this model's calculations are different temperatures within a lake or even a puddle of water. Since the weight of water changes a little with its temperature, and the sun generally warms the upper layer of a lake more than the lower parts of it, a lake or pond can come times be decided into more than one different temperature zones.
 For generating Snow on a surface-level or freezing water resulting in ice, a more approximated technique is used. Snow on the surface is simple represented by a textured hight field, which is obtained by the elevation of the vertex grid at that point. For freezing water inside a like, two hight fields are generated: one for the upper and one for the lower surface of the developing ice. The the separation of those, the thickness of the ice-layer can be controlled.
 
 \subsection{Performance}

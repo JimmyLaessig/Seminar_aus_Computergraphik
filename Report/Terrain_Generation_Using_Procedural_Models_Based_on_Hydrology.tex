@@ -4,7 +4,7 @@ Previously we introduced an approach that made use of local terrain features in 
  
 \subsection{River Network Generation}
 A river network can be interpreted as a graph, whose nodes act as either a spring, river mouth, or as a fork. 
-The first step is to create a set of initial candidate nodes on the contour $\Gamma$, which act as river mouths. The user can additionally sketch some parts of the rivers. Initial nodes are placed on regularly jittered sample locations on the sketch. Each not is assigned a priority index, defining the overall appearance of the resulting river network hierarchy. 
+The first step is to create a set of initial candidate nodes on the contour $\Gamma$, which act as river mouths. The user can additionally sketch some parts of the rivers. Initial nodes are placed on regularly jittered sample locations on the sketch. Each node is assigned a priority index, defining the overall appearance of the resulting river network hierarchy. 
 
 \begin{figure}[htb]
 	\centering
@@ -21,9 +21,9 @@ For generating the network, the geometric graph $G$ is incrementally grown and e
 \end{enumerate}
 
 \subsubsection{Node selection}
-The node that will be expanded is selected using a heuristic that takes into account the node elevation and its priority index. The combination of the two criteria allows a simultaneous creation of multiple networks competing for space. 
+The node that will be expanded, is selected using a heuristic that takes the elevation and its priority index into account. The combination of the two criteria allows a simultaneous creation of multiple networks competing for space. 
 First we find the candidate node with the lowest elevation $z$. 
-$\zeta $ is a parameter, that controls maximum range of elevation. Therefore we obtain a subset of admissible nodes, that are within the range of $[z, z + \zeta]$. From this set, the node with the highest priority index is chosen. if more than one node satisfies this criterion, the node with the lowest altitude will be chosen. 
+$\zeta $ is a parameter, that controls maximum range of elevation. Therefore we obtain a subset of admissible nodes, that are within the range of $[z, z + \zeta]$. From this set, the node with the highest priority index is chosen. If more than one node satisfies this criterion, the node with the lowest altitude will be chosen. 
 
 Therefore the value of $\zeta$ directly influenced the appearance of the networks. If the decision is mainly based on the priority index (large $\zeta$), large networks are created. In contrast, if the elevation is pivotal, many local networks of similar sizes are created.
 
@@ -31,7 +31,7 @@ Therefore the value of $\zeta$ directly influenced the appearance of the network
 	\centering
 	\includegraphics[width=\linewidth]{GGG13/drainage_system}
 	\caption{Different networks are obtained from different $\zeta$ values. With $\zeta = 0$, we obtain networks of similar sizes. When using a high value $(\zeta = 20)$, one large network suppresses other networks. }
-	\label{fig:river_network_sketch}
+	\label{fig:dif_networks}
 \end{figure}
 
 \subsubsection{Node expansion}
@@ -58,7 +58,7 @@ The watershed of a cell $s$ is defined as the set of upstream connected cells an
 	\label{fig:voronoi_watershed}
 \end{figure}
 
-An edge of a Voronoi cell intersecting the river graph carry a connection to other river cells. Therefore the cannot be elevated. Edges that do not intersect the graph are used to compute the elevation of ridges between several streams. The points of this edge are called crest points. Each crest points is located at an equal distance $d$ from the centers $a, b, c$ of neighboring river nodes. Looking at figure \ref{fig:crest} the crest q should have a higher elevation than $a$, $b$ and $c$, insuring a continuous water flow. The elevation $q_z$ is computed as follows: 
+An edge of a Voronoi cell intersecting the river graph carry a connection to other river cells. Therefore the edge cannot be elevated. Edges that do not intersect the graph are used to compute the elevation of ridges between several streams. The points of this edge are called crest points. Each crest points is located at an equal distance $d$ from the centers $a, b, c$ of neighboring river nodes. Looking at figure \ref{fig:crest} the crest q should have a higher elevation than $a$, $b$ and $c$, insuring a continuous water flow. The elevation $q_z$ is computed as follows: 
 
 $$q_z = max(a_z, b_z, c_z) + \lambda(q) \cdot d, \\ \lambda \in [0; 0.25]$$ 
 

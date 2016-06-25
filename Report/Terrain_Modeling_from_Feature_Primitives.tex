@@ -22,8 +22,8 @@ $ f(p) = c_{z} +  \sum\limits_{i = 0}^{n-1}(a_i\eta((p-c)s_i))$.
 
 \textbf{Curve primitives} are made up of a piecewise curve skeleton  $\Gamma$ and a set of profiles $\{c_i\}$. A profile describes a cross section perpendicular to the skeleton. Any function can be used to describe the cross section, in this example each cross section described as a one-dimensional quadratic function. The position is then constructed by interpolation using the curvilinear coordinates. 
 
-One large use of curve primitives is rivers. A river follows its path, described with the curve skeleton. Using different profiles a homogenous shore can be obtained. More complex profiles can describe more larger river systems like deltas and side streams. 
-Modifying the profile accordingly, one can simulate roads with this model, by parametrising the cross section with the road width and defining the elevation of the road in order to allow combination with other primitives in the terrain.
+One large use of curve primitives is rivers. A river follows its path, described with the curve skeleton. Using different profiles a homogenous shore can be obtained. More complex profiles can describe larger river systems like deltas and side streams. 
+Modifying the profile accordingly, one can simulate roads with this model, by parametrizing the cross section with the road width and defining the elevation of the road in order to allow combination with other primitives in the terrain.
 
 \begin{figure}[htb]
 	\centering
@@ -56,7 +56,7 @@ Complex terrain features are difficult to create procedurally. To add complex fe
 Much like in Constructive Solid Geometry the inner nodes of the construction tree are operators. These operators combine the elevation function $f$ and weight function $\alpha$ of their sub-trees. For simplicity we consider binary nodes and denote the two sub-trees $A$ and $B$. 
 
 \subsubsection{Blending}
-The elevation of two nodes are mixed according to their corresponding weight function. This allows to combine large scale terrain primitives in an effective matter. If two primitives are far away, the do not influence each other. The resulting terrain is the union of to sub-trees. If their regions of interest intersect they blend together.
+The elevations of two nodes are mixed according to their corresponding weight function. This allows to combine large scale terrain primitives in an effective matter. If two primitives are far away, they do not influence each other. The resulting terrain is the union of two sub-trees. If their regions of interest intersect they blend together.
 \begin{figure}[htb]
 	\centering
 	\includegraphics[width=.8\linewidth]{GGP15/blend_operator}

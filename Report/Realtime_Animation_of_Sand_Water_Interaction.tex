@@ -1,5 +1,5 @@
 \section{Real-time Animation of Sand-Water Interaction}
-We all came across wet sand in one way or the other. Might is have been when building sandcastles as a child, or relaxing at the beach during a vacation. But modeling such a rather common phenomenon is much more difficult than one might expect.
+At some point we all came across wet sand in one way or the other. 
 
 \begin{figure}[htb]
 	\centering
@@ -8,7 +8,7 @@ We all came across wet sand in one way or the other. Might is have been when bui
 	\label{fig:pileofsand}
 \end{figure}
 
-Although sand and beach environments are quite common in many commuter games, the physically correct simulation of sand-water interaction has only been approached recently. A very promising method was proposed by \cite{rungjiratananon2008real}. The approach is based on modeling every grain of sand as a separate particle. Each such particle as a specific "wetness" value assigned to them. This represents if we are dealing with dry, wet or "overwet" sand (see Figure \ref{fig:wetness} and \ref{fig:wetsandtypes}). Another crucial thing to take into account are the liquid bridges, which are formed between sand particles when fluids (water) are introduced.
+Although sand and beach environments are quite common in many computer games, the physically correct simulation of sand-water interaction has only been approached recently. A very promising method was proposed by \cite{rungjiratananon2008real}. The approach is based on modeling every grain of sand as a separate particle. Each such particle has a specific "wetness" value assigned to them. This represents if we are dealing with dry, wet or "overwet" sand (see Figure \ref{fig:wetness} and \ref{fig:wetsandtypes}). Another crucial thing to take into account are the liquid bridges, which are formed between sand particles when fluids (water) are introduced.
 
 \begin{figure}[htb]
 	\centering
@@ -27,7 +27,7 @@ The two different models utilized here are Smoothed Particle Hydrodynamics (SPH)
 	\label{fig:domains}
 \end{figure}
 
-While SPH is used to calculate forces within a particle, DEM helps calculation the attractive forces between multiple particles. If the 1st or the second model is used depends on the wetness value. exceeding a specific: If the wetness is high enough, liquid bridges are formed and therefore inter-particle forces have to be taken into account. Since those forces are quite string, gravity and moisture absorbed from the air are not considered to be part of the result and therefore not tackled in this approach.
+While SPH is used to calculate forces within a particle, DEM calculates the attractive forces between multiple particles. Wether to use the first or second mode is decided by the wetness value. Exceeding a specific: If the wetness is high enough, liquid bridges are formed and therefore inter-particle forces have to be taken into account. Since those forces are quite string, gravity and moisture absorbed from the air are not considered to be part of the result and therefore not tackled in this approach.
 
 \subsection{Performance and real-time usability}
 Since every particle has to be treated completely separately resulting in a high amount of parallel computations, this is done on the GPU most efficiently. This vast number of calculations results in a "moderate" frame rate when trying to simulate more complex scenarios. The results from \cite{rungjiratananon2008real} where achieved with common Hardware from 2008, resulting in around 40 fps for 32k granular and 32k fluid particles, and drops down to 4 fps when using 33k granular and 64k fluid particles respectively.

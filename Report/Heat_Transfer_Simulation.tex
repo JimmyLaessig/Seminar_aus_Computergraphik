@@ -1,8 +1,6 @@
 \section{Heat Transfer Simulation for Modeling Realistic Winter Sceneries}
 
-\cite{benes2001layered}.
-
-!!! RAW TEXT !!!
+\cite{benes2001layered} - !!! RAW TEXT !!!
 
 While many of the previously presented papers strictly deal with erosion in combination with evaporation and seminentation alone, the temperature is mostly assumed to be constant. In some simpler cases it is not take into account at all. In paper presented in this chapter, exactly that often "overlooked" topic becomes the primary focus of the calculations.
 
@@ -14,16 +12,17 @@ To allow more complex thermal calculation for simulating a natural environment, 
 \end{itemize}
 
 The name of these methods basically already implies what they fundamentally do:
-The particle based accumulation methods evaluate the trajectory of snowflakes (blown by the wind) colliding with the surface (). In an alternative approach the stochastically generated snowflakes are "shot up in the sky" and the calculations are done recursively. Non of these methods are truly physics-based and both either include solving Navier-Stokes () or the Bolzmann equations (). The only physics based system mentioned, works on basis of vortex fields and incorporates melting snow, but leaves the weather completely aside.
 
-The surface displacement methods basically only calculate the hight of the accumulated snow falling on a specific spot. This can easily be done by using the depth buffer () or through dissipating calculated ambient occlusion with illumination (). Another very efficient variant of this approach is done by using hight span maps and heavily relies on a statistical model for snow accumulation derived from observations in nature ().
+The particle based accumulation methods evaluate the trajectory of snowflakes (blown by the wind) colliding with the surface (---). In an alternative approach the stochastically generated snowflakes are "shot up in the sky" and the calculations are done recursively. Non of these methods are truly physics-based and both of them includes solving Navier-Stokes (---) or the Bolzmann equations (---). The only physics based system mentioned, works on basis of vortex fields and incorporates melting snow, but leaves the weather completely aside.
 
-Calculating ice growth is not used so widely. Some methods simulate ice crystal formation over objects by using a phase field method (). Another more sophisticated hybrid-approach combines those phase filed methods with fluid simulation and procedural defused limited aggregation ().
+The surface displacement methods basically only calculate the hight of the accumulated snow falling on a specific spot. This can easily be done by using the depth buffer (---) or through dissipating calculated ambient occlusion with illumination (---). Another very efficient variant of this approach is done by using hight span maps and heavily relies on a statistical model for snow accumulation derived from observations in nature (---).
+
+Calculating ice growth is not used so widely. Some methods simulate ice crystal formation over objects by using a phase field method (---). Another more sophisticated hybrid-approach combines those phase filed methods with fluid simulation and procedural defused limited aggregation (---).
 
 \subsection{The newly proposed approach}
-Like many other methods, this one also relies on a voxel grid. Like for so many other authors before mentioned, the challenge is to find the right balance between a high-resolution grid which is able to capture small details, and a large scale grid which requires less memory and computational effort.
+Like many other methods, the approach presented in this paper \cite{benes2001layered} also relies on a voxel grid. Like for so many other authors before mentioned, the challenge is to find the right balance between a high-resolution grid which is able to capture small details, and a large scale grid which requires less memory and computational effort.
 
-Here this problem is handled by evaluating the evolution of temperature of every voxel, taking into account changing weather and environmental conditions (and therefore temperate) over time. After that a hightfield is generated for the surface representation, from the hight of snow stored in the according voxels ().
+Here this problem is handled by evaluating the evolution of temperature of every voxel, taking into account changing weather and environmental conditions (and therefore temperate) over time. After that a hightfield is generated for the surface representation, from the hight of snow stored in the according voxels \cite{benes2001layered}.
 
 The data structure used for the calculation consists of a grid of voxels, where for each voxel one (or two) materials, the temperature and the percentage of solid material are stored along with energy exchange over time. Since some voxels can contain two materials at once (e.g. ice and water or snow and air), these voxels need to be evaluated more carefully. Phase transitions are more likely to occur in those "mixed" voxels than in any other one.
 
@@ -57,6 +56,4 @@ For generating Snow on a surface-level or freezing water resulting in ice, a mor
 \subsection{Performance}
 As is can easily be derived from the complexity of the calculations done in this approach, this technique was never meant to be performed in realtime. Although the time step can be set relatively large, since thermal effects occur much slower than many other natural phenomena, the time needed for the calculations is still quite high.
 
-Nevertheless the paper include one relatively simple example of a landscape simulation, along with the time it took to compute. The implementation used was written in C++ and run on an Intel Dual-Core processor with 3GHz and with 3GB RAM. On this hardware the calculation for a nine day weather model on a grid of 3.2 million voxels tool about 5 hours ().
-
-!!! RAW TEXT !!!
+Nevertheless the paper include one relatively simple example of a landscape simulation, along with the time it took to compute. The implementation used was written in C++ and run on an Intel Dual-Core processor with 3GHz and with 3GB RAM. On this hardware the calculation for a nine day weather model on a grid of 3.2 million voxels tool about 5 hours \cite{benes2001layered}.

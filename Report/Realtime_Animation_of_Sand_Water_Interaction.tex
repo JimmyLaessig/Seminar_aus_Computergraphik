@@ -27,7 +27,7 @@ The two different models utilized here are Smoothed Particle Hydrodynamics (SPH)
 	\label{fig:domains}
 \end{figure}
 
-While SPH is used to calculate forces within a particle, DEM calculates the attractive forces between multiple particles. Wether to use the first or second mode is decided by the wetness value. Exceeding a specific: If the wetness is high enough, liquid bridges are formed and therefore inter-particle forces have to be taken into account. Since those forces are quite string, gravity and moisture absorbed from the air are not considered to be part of the result and therefore not tackled in this approach.
+While SPH is used to calculate forces within a particle, DEM calculates the attractive forces between multiple particles. Whether to use the first or second mode is decided by the wetness value. Exceeding a specific: If the wetness is high enough, liquid bridges are formed and therefore inter-particle forces have to be taken into account. Since those forces are quite string, gravity and moisture absorbed from the air are not considered to be part of the result and therefore not tackled in this approach.
 
 \subsection{Performance and real-time usability}
 Since every particle has to be treated completely separately resulting in a high amount of parallel computations, this is done on the GPU most efficiently. This vast number of calculations results in a "moderate" frame rate when trying to simulate more complex scenarios. The results from \cite{rungjiratananon2008real} where achieved with common Hardware from 2008, resulting in around 40 fps for 32k granular and 32k fluid particles, and drops down to 4 fps when using 33k granular and 64k fluid particles respectively.

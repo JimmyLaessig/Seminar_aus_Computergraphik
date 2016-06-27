@@ -16,14 +16,14 @@ $ f(p) = c_{z} +  \sum\limits_{i = 0}^{n-1}(a_i\eta((p-c)s_i))$.
 \begin{figure}[htb]
 	\centering
 	\includegraphics[width=.8\linewidth]{GGP15/disc_primitive}
-	\caption{This figure shows a disc primitive creating a circular landform. The mountain is obtained using ridge-multifractal noise function, smooth hills are created using a turbulence function.}
+	\caption{This figure shows a disc primitive creating a circular land form. The mountain is obtained using ridge-multifractal noise function, smooth hills are created using a turbulence function.}
 	\label{fig:disc_primitive}
 \end{figure}
 
 \textbf{Curve primitives} are made up of a piecewise curve skeleton  $\Gamma$ and a set of profiles $\{c_i\}$. A profile describes a cross section perpendicular to the skeleton. Any function can be used to describe the cross section, in this example each cross section described as a one-dimensional quadratic function. The position is then constructed by interpolation using the curvilinear coordinates. 
 
-One large use of curve primitives is rivers. A river follows its path, described with the curve skeleton. Using different profiles a homogenous shore can be obtained. More complex profiles can describe larger river systems like deltas and side streams. 
-Modifying the profile accordingly, one can simulate roads with this model, by parametrizing the cross section with the road width and defining the elevation of the road in order to allow combination with other primitives in the terrain.
+One large use of curve primitives is rivers. A river follows its path, described with the curve skeleton. Using different profiles a homogeneous shore can be obtained. More complex profiles can describe larger river systems like deltas and side streams. 
+Modifying the profile accordingly, one can simulate roads with this model, by parameterizing the cross section with the road width and defining the elevation of the road in order to allow combination with other primitives in the terrain.
 
 \begin{figure}[htb]
 	\centering
@@ -42,7 +42,7 @@ Modifying the profile accordingly, one can simulate roads with this model, by pa
 \end{figure}
 
 \subsubsection{Image primitives}
-Complex terrain features are difficult to create procedurally. To add complex feature, such as detailed river shores or sand ripples, image based primitives are used. This process is similar to using a heightfield on a terrain. 
+Complex terrain features are difficult to create procedurally. To add complex features, such as detailed river shores or sand ripples, image based primitives are used. This process is similar to using a heightfield on a terrain. 
 
 \begin{figure}[htb]
 	\centering

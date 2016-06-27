@@ -12,12 +12,12 @@
 This Paper \cite{marechal2010heat} focuses on introducing a completely new data-structure to store terrain-information which makes calculations much easier to perform. The two opposing conventional methods of storing and handling such data have already been explained before:
 \begin{itemize}
 	\item Voxel Representations which allow for accurate calculations but have very high memory demands
-	\item Representations of the just the terrain-surface with hightfield(s) where precision and accuracy is sacrificed in order to gain space and reduce computing requirements.
+	\item Representations of the just the terrain-surface with heightfield(s) where precision and accuracy is sacrificed in order to gain space and reduce computing requirements.
 \end{itemize}
 
-Many different techniques have already been discussed here and many more have been developed (see Figure \ref{fig:thermal_erosion} for example). Some of the most common ones include fractal interpolation to generate hills and water streams \cite{kelley1988terrain} or blending some elaborate noise functions to generate visually plausible results (see \cite{eckbert2000simulating}, \cite{musgrave1989synthesis} and \cite{musgrave1999towards}). In this paper it is also specifically underlined, that the different attributes of present materials need to be taken into account. This might actually influence the erosion process quite a bit as it can be seen in Figure \ref{fig:erosiondifference}. But all of there approaches have one thing in common: while the accuracy of true 3D Voxel representation is often approximated quite well, is is never truly reached with those techniques.
+Many different techniques have already been discussed here and many more have been developed (see Figure \ref{fig:thermal_erosion} for example). Some of the most common ones include fractal interpolation to generate hills and water streams \cite{kelley1988terrain} or blending some elaborate noise functions to generate visually plausible results (see \cite{eckbert2000simulating}, \cite{musgrave1989synthesis} and \cite{musgrave1999towards}). In this paper it is also specifically underlined, that the different attributes of present materials need to be taken into account. This might actually influence the erosion process quite a bit as it can be seen in Figure \ref{fig:erosiondifference}. But all of there approaches have one thing in common: while the accuracy of true 3D voxel representation is often approximated quite well, is is never truly reached with those techniques.
 
-To overcome this limitation and enable very accurate calculations, which are meant to be used in physical simulations rather than in realtime environments, the authors generated a mixed data-structure combining Voxel and hight filed representations.
+To overcome this limitation and enable very accurate calculations, which are meant to be used in physical simulations rather than in real-time environments, the authors generated a mixed data-structure combining voxel and hight filed representations.
 
 \begin{figure}[htb]
 	\centering
@@ -26,8 +26,8 @@ To overcome this limitation and enable very accurate calculations, which are mea
 	\label{fig:coresample}
 \end{figure}
 
-\subsection{A novel datastructure}
-Since in many areas of a given terrain full Voxel data would be "waste  of data" \cite{marechal2010heat} since the represented layers are usually quite thick, one can reduce the needed space in some areas. This approach used in this paper is to use a 2D array of 1D arrays as representation of terrain. Like illustrated in Figure \ref{fig:coresample}, it can easily be imaged as a core sample where each layer in itself is supposed to be constant (or rather is's parameters are). The hight of the position can easily derived from a "core samples" hight and it's index.
+\subsection{A novel data structure}
+Since in many areas of a given terrain full voxel data would be "waste  of data" \cite{marechal2010heat} since the represented layers are usually quite thick, one can reduce the needed space in some areas. This approach used in this paper is to use a 2D array of 1D arrays as representation of terrain. Like illustrated in Figure \ref{fig:coresample}, it can easily be imaged as a core sample where each layer in itself is supposed to be constant (or rather is's parameters are). The hight of the position can easily derived from a "core samples" hight and it's index.
 
 \begin{figure}[htb]
 	\centering
@@ -36,7 +36,7 @@ Since in many areas of a given terrain full Voxel data would be "waste  of data"
 	\label{fig:erosiondifference}
 \end{figure}
 
-The big advantage of this kind of data structure is it's easy and fast traversal with a much smaller effort (and thus higher speed) as it would be the case for a conventional pure-Voxel approach. Another positive side effect of storing data this was is that the data structure also allows for zero-density layers. This way also caves and even material falling from the ceiling of those caves (along the inverted surface gradient) can be captured and therefore be used to perform calculations. That way erosion can not only be performed on the terrain-surface, but also in all sub-surface holes existing or developing in the terrain \cite{marechal2010heat}.
+The big advantage of this kind of data structure is it's easy and fast traversal with a much smaller effort (and thus higher speed) as it would be the case for a conventional pure voxel approach. Another positive side effect of storing data this was is that the data structure also allows for zero-density layers. This way also caves and even material falling from the ceiling of those caves (along the inverted surface gradient) can be captured and therefore be used to perform calculations. That way erosion can not only be performed on the terrain-surface, but also in all sub-surface holes existing or developing in the terrain \cite{marechal2010heat}.
 
 
 \subsection{Efficiency}

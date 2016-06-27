@@ -1,6 +1,6 @@
 \section{Interactive physically based Fluid and Erosion Simulation}
 
-The behaviour of water massively influences the look and features of a terrain. Depending on the timespawn, amount of water, ground composition and many more factors, hydraulic erosion creates a variety of different, but distinctive ground deformations, such as ripples, ridges, meanders, riverruns and valleys. 
+The behavior of water massively influences the look and features of a terrain. Depending on the timespan, amount of water, ground composition and many more factors, hydraulic erosion creates a variety of different, but distinctive ground deformations, such as ripples, ridges, meanders, river runs and valleys. 
 This paper \cite{Neidhold:2005:IPB:2381356.2381361} presents an approach capable of creating such deformations in short amount of time, making it suitable for interactive visualization. The model represents terrain and water surfaces using height field, which is sampled onto a regular grid. A shallow water model is used to update the water surfaces and the fluid velocity field. 
 
 \subsection{Water simulation}
@@ -39,7 +39,7 @@ $\vec{M}_z$ describes the acceleration direction along the z-axis.
 \end{figure}
 
 \subsection{Hydraulic erosion function}
-When water flows, soil, stones and other materials are dislocated and transported to lower regions. Whenever a part of material is moved to another grid cell by the simulation a hydraulic erosion function is used. It determines the amount of dissolved and deposited parts of material. The function uses the amount of transported fluit $\Delta F$ and the amount of sediment dissolved in this fluid $\Delta S$ as input. The function determines whether sediment can be deposited to or dissolved from the underlying cell. The function uses three major constants. 
+When water flows, soil, stones and other materials are dislocated and transported to lower regions. Whenever a part of material is moved to another grid cell by the simulation a hydraulic erosion function is used. It determines the amount of dissolved and deposited parts of material. The function uses the amount of transported fluid $\Delta F$ and the amount of sediment dissolved in this fluid $\Delta S$ as input. The function determines whether sediment can be deposited to or dissolved from the underlying cell. The function uses three major constants. 
 \begin{itemize}
 \item A \textbf{sediment capacity constant} $K_C$ determines how much of the underlying material can be dissolved per unit of water at a velocity of one. 
 \item The \textbf{deposition constant} $K_D$ controls the rate at which soil is deposited at the target grid cell. 
